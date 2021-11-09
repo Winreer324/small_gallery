@@ -1,37 +1,39 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:small_gallery/app/resources/resources.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'app/di/injection.dart';
+import 'app/ui/navigation/photo_imports.dart';
+
+void main() async {
+  // set di
+  await setInjections();
+  // local storage
+  // await setHiveProperties();
+  // final GlobalKey<NavigatorState> navigatorKey = AppConst.alice.getNavigatorKey()!;
+
+  /// init end
+  runZonedGuarded(
+    () => runApp(Gallery()),
+    // () => runApp(Gallery(navigatorKey: navigatorKey)),
+    (_, __) {},
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Gallery extends StatelessWidget {
+  final GlobalKey<NavigatorState>? navigatorKey;
+
+  const Gallery({Key? key,   this.navigatorKey}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // AppConst.alice.setNavigatorKey(navigatorKey);
     return MaterialApp(
-      title: 'Code Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: const Center(),
+      title: AppStrings.titleApp,
+      theme: AppThemes.appTheme,
+      navigatorKey: navigatorKey,
+      home: const NavigationScreen(),
     );
   }
 }
