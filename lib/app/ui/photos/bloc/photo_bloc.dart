@@ -19,43 +19,57 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
 
   PhotoBloc({required this.photoGateway, required this.typePhoto}) : super(PhotoInitial());
 
-  // {
-  //   on<PhotoEvent>((event, emit) {
-  //     // TODO: implement event handler
-  //   });
-  // }
-
   bool isPaginationLoading = false;
 
   int _page = 1;
   int _countOfPages = 1;
 
-  List<PhotoEntity> _photos = [];
+  final List<PhotoEntity> _photos = [];
 
   @override
   Stream<PhotoState> mapEventToState(
     PhotoEvent event,
   ) async* {
+    final currentState = state;
     if (event is PhotoFetch) {
-      yield* _mapPhotoFetch();
+      yield* _mapPhotoFetch(currentState: currentState);
     }
     if (event is PhotoRefresh) {
-      yield* _mapPhotoRefresh();
+      yield* _mapPhotoRefresh(currentState: currentState);
+    }
+    if (event is PhotoItemClicked) {
+      yield* _mapPhotoItemClicked(event: event, currentState: currentState);
     }
   }
 
-  Stream<PhotoState> _mapPhotoFetch() async* {
-    yield* _fetchData();
+  Stream<PhotoState> _mapPhotoFetch({
+    required PhotoState currentState,
+  }) async* {
+    yield* _fetchData(currentState: currentState);
   }
 
-  Stream<PhotoState> _mapPhotoRefresh() async* {
-    yield* _fetchData(isRefresh: true);
+  Stream<PhotoState> _mapPhotoItemClicked({
+    required PhotoState currentState,
+    required PhotoItemClicked event,
+  }) async* {
+    yield PhotoItemOpen(photo: event.photo);
+    yield PhotoSuccess(photos: _photos);
   }
 
-  Stream<PhotoState> _fetchData({bool isRefresh = false}) async* {
+  Stream<PhotoState> _mapPhotoRefresh({
+    required PhotoState currentState,
+  }) async* {
+    yield* _fetchData(currentState: currentState, isRefresh: true);
+  }
+
+  Stream<PhotoState> _fetchData({required PhotoState currentState, bool isRefresh = false}) async* {
+    int saveCurrentPage = _page;
     if (isRefresh) {
       _resetPagination();
     }
+
+    if (state is PhotoSuccess) {
+    } else {}
 
     if (_photos.isEmpty) {
       yield PhotoLoading();
@@ -80,16 +94,28 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
           _countOfPages = paginationResponse.countOfPages;
           _photos.addAll(paginationResponse.items);
         }
-        isPaginationLoading = false;
-        yield PhotoSuccess(photos: _photos);
       }
+      isPaginationLoading = false;
+      yield PhotoSuccess(photos: _photos);
     } on NoInternetConnection catch (_) {
-      yield PhotoError();
+      yield* _setError(isRefresh, saveCurrentPage, loadInternetConnect: true);
     } catch (e) {
-      if (_photos.isEmpty) {
-        yield PhotoError();
-      } else {
+      yield* _setError(isRefresh, saveCurrentPage);
+    }
+  }
+
+  Stream<PhotoState> _setError(bool isRefresh, int saveCurrentPage, {bool loadInternetConnect = false}) async* {
+    isPaginationLoading = false;
+    if (isRefresh) {
+      _page = saveCurrentPage;
+    }
+    if (_photos.isEmpty) {
+      yield PhotoError(loadInternetConnect: loadInternetConnect);
+    } else {
+      if (!loadInternetConnect) {
         yield PhotoSuccess(photos: _photos);
+      } else {
+        yield PhotoError(loadInternetConnect: loadInternetConnect);
       }
     }
   }

@@ -5,4 +5,5 @@ class AppIcons {
 
   /// common
   static const String placeholderNetworkPng = 'assets/common/placeholder_network.png';
+  static const String backIconSvg = 'assets/icons/back_arrow.svg';
 }

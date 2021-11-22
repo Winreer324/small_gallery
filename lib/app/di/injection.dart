@@ -16,9 +16,7 @@ Future setInjections() async {
   dio.options.baseUrl = ApiConstants.baseUrl;
   dio.options.connectTimeout = AppConst.timeoutDurationInMilliseconds;
   dio.options.receiveTimeout = AppConst.timeoutDurationInMilliseconds;
-
-  // dio.interceptors.add(AppConst.alice.getDioInterceptor());
-
+  dio.interceptors.add(AppConst.alice.getDioInterceptor());
   injection.registerLazySingleton<Dio>(() => dio);
 
   injection.registerLazySingleton<PhotoGateway>(() => HttpPhotoGateway(dio: dio));

@@ -6,7 +6,7 @@ class AppConst {
 
   ///
   static const int defaultPage = 1;
-  static const int limitItems = 15;
+  static const int limitItems = 14;
 
   ///
   static const int timeoutDurationInMilliseconds = 60 * 1000;

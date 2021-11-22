@@ -18,7 +18,8 @@ class HttpPhotoGateway extends PhotoGateway {
     required int page,
     required int limit,
   }) async {
-    const String url = "${ApiConstants.baseUrl}/${ApiConstants.photos}";
+    // const String url = "${ApiConstants.baseUrl}/${ApiConstants.photos}";
+    // const String url = ApiConstants.photos;
     final queryParameters = {
       ApiConstants.queryParametersPage: page,
       ApiConstants.queryParametersLimit: limit,
@@ -26,7 +27,7 @@ class HttpPhotoGateway extends PhotoGateway {
     };
 
     return ApiRequestHandler.sendRequest<PaginationResponse<PhotoEntity>>(
-      request: dio.get(url, queryParameters: queryParameters),
+      request: dio.get(ApiConstants.photos, queryParameters: queryParameters),
       converter: (json) => PaginationResponse<PhotoEntity>.fromJson(json),
     );
   }

@@ -3,25 +3,28 @@ part of 'bottom_navigation_bar_imports.dart';
 class BottomNavigationBarItemWidget extends BottomNavigationBarItem {
   BottomNavigationBarItemWidget({
     required String iconPath,
+    Widget? noActiveIcon,
     Widget? activeIcon,
     String? label,
     String? tooltip,
     Color? backgroundColor,
   }) : super(
-    icon: SvgPicture.asset(
-      iconPath,
-      color: AppColors.gray,
-      width: AppWidgetConstants.navigationSizeIcon,
-      height: AppWidgetConstants.navigationSizeIcon,
-    ),
-    activeIcon: SvgPicture.asset(
-      iconPath,
-      color: AppColors.baseColor,
-      width: AppWidgetConstants.navigationSizeIcon,
-      height: AppWidgetConstants.navigationSizeIcon,
-    ),
-    label: label,
-    tooltip: tooltip,
-    backgroundColor: backgroundColor,
-  );
+          icon: noActiveIcon ??
+              SvgPicture.asset(
+                iconPath,
+                color: AppColors.gray,
+                width: AppWidgetConstants.navigationSizeIcon,
+                height: AppWidgetConstants.navigationSizeIcon,
+              ),
+          activeIcon: activeIcon ??
+              SvgPicture.asset(
+                iconPath,
+                color: AppColors.baseColor,
+                width: AppWidgetConstants.navigationSizeIcon,
+                height: AppWidgetConstants.navigationSizeIcon,
+              ),
+          label: label,
+          tooltip: tooltip,
+          backgroundColor: backgroundColor,
+        );
 }

@@ -1,39 +1,15 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:small_gallery/app/resources/resources.dart';
+import 'package:small_gallery/app_widget.dart';
 
 import 'app/di/injection.dart';
-import 'app/ui/navigation/photo_imports.dart';
+import 'app/resources/resources.dart';
 
 void main() async {
   // set di
   await setInjections();
-  // local storage
-  // await setHiveProperties();
-  // final GlobalKey<NavigatorState> navigatorKey = AppConst.alice.getNavigatorKey()!;
 
-  /// init end
-  runZonedGuarded(
-    () => runApp(Gallery()),
-    // () => runApp(Gallery(navigatorKey: navigatorKey)),
-    (_, __) {},
-  );
-}
+  final GlobalKey<NavigatorState> navigatorKey = AppConst.alice.getNavigatorKey()!;
+  AppConst.alice.setNavigatorKey(navigatorKey);
 
-class Gallery extends StatelessWidget {
-  final GlobalKey<NavigatorState>? navigatorKey;
-
-  const Gallery({Key? key,   this.navigatorKey}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    // AppConst.alice.setNavigatorKey(navigatorKey);
-    return MaterialApp(
-      title: AppStrings.titleApp,
-      theme: AppThemes.appTheme,
-      navigatorKey: navigatorKey,
-      home: const NavigationScreen(),
-    );
-  }
+  runApp(Gallery(navigatorKey: navigatorKey));
 }

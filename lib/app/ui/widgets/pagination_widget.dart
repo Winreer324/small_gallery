@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:small_gallery/app/ui/photos/bloc/photo_bloc.dart';
 
 class PaginationWidget extends StatefulWidget {
   final ScrollController scrollController;
   final Widget child;
+  final Function() callbackPagination;
 
-  const PaginationWidget({Key? key, required this.scrollController, required this.child}) : super(key: key);
+  const PaginationWidget({
+    Key? key,
+    required this.scrollController,
+    required this.child,
+    required this.callbackPagination,
+  }) : super(key: key);
 
   @override
   _PaginationWidgetState createState() => _PaginationWidgetState();
@@ -20,11 +24,8 @@ class _PaginationWidgetState extends State<PaginationWidget> {
     _scrollController = widget.scrollController;
     _scrollController.addListener(() {
       if (mounted) {
-        if (_scrollController.offset == _scrollController.position.maxScrollExtent &&
-            !context.read<PhotoBloc>().isPaginationLoading) {
-          context.read<PhotoBloc>()
-            ..isPaginationLoading = true
-            ..add(PhotoFetch());
+        if (_scrollController.offset == _scrollController.position.maxScrollExtent) {
+          widget.callbackPagination();
         }
       }
     });
@@ -34,7 +35,7 @@ class _PaginationWidgetState extends State<PaginationWidget> {
 
   @override
   void dispose() {
-    _scrollController;
+    _scrollController.dispose();
     super.dispose();
   }
 

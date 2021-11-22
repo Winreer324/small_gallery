@@ -6,6 +6,13 @@ abstract class PhotoState {}
 class PhotoInitial extends PhotoState {}
 
 class PhotoLoading extends PhotoState {}
+
+class PhotoItemOpen extends PhotoState {
+  final PhotoEntity photo;
+
+  PhotoItemOpen({required this.photo});
+}
+
 class PhotoSuccess extends PhotoState {
   final List<PhotoEntity> photos;
 
@@ -15,6 +22,7 @@ class PhotoSuccess extends PhotoState {
 class PhotoError extends PhotoState {
   final String? title;
   final String? description;
+  final bool loadInternetConnect;
 
-  PhotoError({this.title, this.description});
+  PhotoError({this.title, this.description, this.loadInternetConnect = false});
 }

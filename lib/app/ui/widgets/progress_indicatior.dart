@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:small_gallery/app/resources/resources.dart';
 
 class ProgressIndicatorWidget extends StatelessWidget {
-  const ProgressIndicatorWidget({Key? key}) : super(key: key);
+  final double strokeWidth;
+
+  const ProgressIndicatorWidget({Key? key, this.strokeWidth = 5}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const CircularProgressIndicator(
+    return CircularProgressIndicator(
       color: AppColors.baseColor,
-      strokeWidth: 5,
+      strokeWidth: strokeWidth,
     );
   }
 }

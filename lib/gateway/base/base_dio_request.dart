@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:small_gallery/gateway/exception/exception.dart';
 import 'package:small_gallery/gateway/helpers/internet_connection.dart';
 import 'package:small_gallery/gateway/resources/api_constants.dart';
+
+export 'package:small_gallery/gateway/exception/exception.dart';
 
 class ApiRequestHandler {
   static Future<E> sendRequest<E>({
@@ -15,12 +18,12 @@ class ApiRequestHandler {
         final Response response = await request;
 
         if (!response.statusCode.toString().startsWith('2')) {
-          throw handleError(errorResponse: response);
+          throw _handleError(errorResponse: response);
         } else {
           return converter(response.data);
         }
       } on DioError catch (e) {
-        throw handleError(dioError: e);
+        throw _handleError(dioError: e);
       } catch (_) {
         throw UnknownError();
       }
@@ -29,7 +32,7 @@ class ApiRequestHandler {
     }
   }
 
-  static Exception handleError({Response<dynamic>? errorResponse, DioError? dioError}) {
+  static Exception _handleError({Response<dynamic>? errorResponse, DioError? dioError}) {
     if (dioError?.type == DioErrorType.connectTimeout ||
         dioError?.type == DioErrorType.receiveTimeout ||
         dioError?.type == DioErrorType.sendTimeout) {
@@ -55,15 +58,7 @@ class ApiRequestHandler {
           detail = error.data![ApiConstants.errorDescription];
           errorType = error.data![ApiConstants.errorType];
         }
-
-        if (errorType == ApiConstants.invalidGrant && detail == ApiConstants.invalidRefreshToken) {
-          return FullUnauthorized();
-        } else if (detail == ApiConstants.userBlocked) {
-          return UserBlocked();
-        } else {
-          return BadRequest(detail, dioError);
-        }
-
+        return UnknownError();
       case 401:
         String? detail;
         String? errorType;
@@ -77,13 +72,7 @@ class ApiRequestHandler {
           errorType = error.data![ApiConstants.errorType];
         }
 
-        if (errorType == ApiConstants.invalidGrant && detail == ApiConstants.invalidRefreshToken) {
-          return FullUnauthorized();
-        } else if (detail == ApiConstants.userBlocked) {
-          return UserBlocked();
-        } else {
-          return Unauthorized();
-        }
+        return Unauthorized();
       case 403:
         return Forbidden(jsonDecode(error.data)[ApiConstants.detail]);
       case 404:
@@ -98,45 +87,3 @@ class ApiRequestHandler {
     }
   }
 }
-
-//todo вынести в отдельный класс
-class BadRequest implements Exception {
-  final String? message;
-  final DioError? dioError;
-
-  BadRequest(this.message, this.dioError);
-}
-
-class Forbidden implements Exception {
-  final String? message;
-
-  Forbidden(this.message);
-}
-
-class NotFound implements Exception {
-  final String? message;
-
-  NotFound(this.message);
-}
-
-class Conflict implements Exception {
-  final String? message;
-
-  Conflict(this.message);
-}
-
-class Unauthorized implements Exception {}
-
-class FullUnauthorized implements Exception {}
-
-class UserBlocked implements Exception {}
-
-class ServiceUnavailable implements Exception {}
-
-class NoInternetConnection implements Exception {}
-
-class Duplicate implements Exception {}
-
-class UnknownError implements Exception {}
-
-class TimeoutError implements Exception {}
