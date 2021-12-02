@@ -68,8 +68,7 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       _resetPagination();
     }
 
-    if (state is PhotoSuccess) {
-    } else {}
+    await Future.delayed(Duration(seconds: 4));
 
     if (_photos.isEmpty) {
       yield PhotoLoading();

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:small_gallery/app/resources/resources.dart';
+import 'package:small_gallery/app/ui/widgets/animation_loader.dart';
+import 'package:small_gallery/app/ui/widgets/custom_refresh_indicator.dart';
 import 'package:small_gallery/app/ui/widgets/refresh_widget/cubit/refresh_cubit.dart';
 
 class RefreshWidget extends StatefulWidget {
@@ -9,6 +11,7 @@ class RefreshWidget extends StatefulWidget {
   final Widget child;
   final bool isLoading;
   final ScrollController scrollController;
+
   const RefreshWidget({
     Key? key,
     required this.callPagination,
@@ -40,10 +43,17 @@ class _RefreshWidgetState extends State<RefreshWidget> {
           }
         }
       },
-      child: RefreshIndicator(
+      child: CustomRefreshIndicator(
         onRefresh: () async {
           widget.callPagination();
           return _refreshCompleter?.future ?? Future.value();
+        },
+        builderHeader: (_, value, showIndeterminateIndicator) {
+          return AnimationLoader(
+            color: AppColors.baseColor,
+            valueRotate: value,
+            showIndeterminateIndicator: showIndeterminateIndicator,
+          );
         },
         child: widget.child,
       ),

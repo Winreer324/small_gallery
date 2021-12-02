@@ -14,6 +14,7 @@ class PhotoScreen extends StatefulWidget {
 
 class _PhotoScreenState extends State<PhotoScreen> {
   final ScrollController scrollController = ScrollController();
+  bool showIndeterminateIndicator = false;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +100,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
                     if (context.read<PhotoBloc>().isPaginationLoading) {
                       return const Padding(
                         padding: EdgeInsets.only(bottom: 16),
-                        child: ProgressIndicatorWidget(),
+                        child: AnimationLoader(),
                       );
                     }
 
