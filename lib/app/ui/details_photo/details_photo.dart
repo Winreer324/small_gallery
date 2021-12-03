@@ -40,12 +40,12 @@ class DetailsPhoto extends StatelessWidget {
               minScale: 0.5,
               maxScale: 3,
               child: Hero(
-                tag: photo.imageUrl,
+                tag: photo,
                 child: SizedBox(
                   height: 200,
                   width: context.sizeScreen.width,
                   child: PhotoItem(
-                    imageUrl: photo.imageUrl,
+                    photo: photo,
                     cacheWidth: context.sizeScreen.width,
                     borderRadiusValue: 0,
                   ),
