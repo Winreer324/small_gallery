@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:small_gallery/app/resources/resources.dart';
-
-import 'app_colors.dart';
+part of app;
 
 class AppThemes {
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  AppThemes._();
+
   static final ThemeData appTheme = ThemeData(
     primaryColor: AppColors.baseColor,
     accentColor: AppColors.subBaseColor,

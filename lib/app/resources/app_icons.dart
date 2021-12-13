@@ -1,4 +1,10 @@
+part of app;
+
 class AppIcons {
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  AppIcons._();
+
   /// navigation
   static const String newNavigationBarSvg = 'assets/navigation/new_navigation_bar.svg';
   static const String popularNavigationBarSvg = 'assets/navigation/popular_navigation_bar.svg';

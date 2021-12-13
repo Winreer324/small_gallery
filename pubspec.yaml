@@ -20,12 +20,6 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
     sdk: flutter
@@ -41,15 +35,23 @@ dependencies:
   flutter_screenutil: ^5.0.0+2
   # fonts https://pub.dev/packages/json_annotation
   json_annotation: ^4.3.0
+  # fonts https://pub.dev/packages/freezed_annotation
+  freezed_annotation: ^1.0.0
+
+  domain:
+    path: ./domain
+
+  gateway:
+    path: ./gateway
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  # https://pub.dev/packages/flutter_lints
   flutter_lints: ^1.0.0
-
   # https://pub.dev/packages/flutter_bloc
-  flutter_bloc: ^7.3.1
+  flutter_bloc: ^7.3.3
   # https://pub.dev/packages/build_runner
   build_runner: ^2.0.4
   # https://pub.dev/packages/json_serializable
@@ -75,6 +77,9 @@ dev_dependencies:
 
   # https://pub.dev/packages/mockito
   mockito: ^5.0.16
+
+  # https://pub.dev/packages/freezed
+  freezed: ^1.0.0
 
 #flutter_icons:
 #  android: "launcher_icon"

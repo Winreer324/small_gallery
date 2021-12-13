@@ -9,20 +9,26 @@ class BottomNavigationBarItemWidget extends BottomNavigationBarItem {
     String? tooltip,
     Color? backgroundColor,
   }) : super(
-          icon: noActiveIcon ??
-              SvgPicture.asset(
-                iconPath,
-                color: AppColors.gray,
-                width: AppWidgetConstants.navigationSizeIcon,
-                height: AppWidgetConstants.navigationSizeIcon,
-              ),
-          activeIcon: activeIcon ??
-              SvgPicture.asset(
-                iconPath,
-                color: AppColors.baseColor,
-                width: AppWidgetConstants.navigationSizeIcon,
-                height: AppWidgetConstants.navigationSizeIcon,
-              ),
+          icon: Padding(
+            padding: const EdgeInsets.only(bottom: 5),
+            child: noActiveIcon ??
+                SvgPicture.asset(
+                  iconPath,
+                  color: AppColors.gray,
+                  width: AppWidgetConstants.navigationSizeIcon,
+                  height: AppWidgetConstants.navigationSizeIcon,
+                ),
+          ),
+          activeIcon: Padding(
+            padding: const EdgeInsets.only(bottom: 5),
+            child: activeIcon ??
+                SvgPicture.asset(
+                  iconPath,
+                  color: AppColors.baseColor,
+                  width: AppWidgetConstants.navigationSizeIcon,
+                  height: AppWidgetConstants.navigationSizeIcon,
+                ),
+          ),
           label: label,
           tooltip: tooltip,
           backgroundColor: backgroundColor,

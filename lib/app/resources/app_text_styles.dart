@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:small_gallery/app/resources/app_colors.dart';
-
-import 'app_colors.dart';
+part of app;
 
 class AppTextStyles {
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  AppTextStyles._();
+
   static final TextStyle lightBlackText = GoogleFonts.roboto(fontSize: 12, color: AppColors.lightBlack);
 
   static final TextStyle textMajorSubColor = GoogleFonts.roboto(

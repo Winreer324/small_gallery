@@ -24,7 +24,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
       MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => PhotoBloc(photoGateway: injection(), typePhoto: TypePhoto.newPhoto)..add(PhotoFetch()),
+            create: (_) => PhotoBloc(
+              photoGateway: injection(),
+              typePhoto: TypePhoto.newPhoto,
+            )..add(const PhotoEvent.fetch()),
           ),
           BlocProvider(create: (_) => RefreshCubit()),
         ],
@@ -35,7 +38,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
       MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => PhotoBloc(photoGateway: injection(), typePhoto: TypePhoto.popularPhoto)..add(PhotoFetch()),
+            create: (_) => PhotoBloc(
+              photoGateway: injection(),
+              typePhoto: TypePhoto.popularPhoto,
+            )..add(const PhotoEvent.fetch()),
           ),
           BlocProvider(create: (_) => RefreshCubit()),
         ],
@@ -71,7 +77,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
               _screensList.length,
               (index) => Navigator(
                 key: _navKeys[index],
-                onGenerateRoute: (route) => MaterialPageRoute(
+                onGenerateRoute: (route) => MaterialPageRoute<void>(
                   settings: route,
                   builder: (context) => _screensList[index],
                 ),

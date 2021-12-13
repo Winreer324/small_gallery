@@ -1,10 +1,8 @@
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:small_gallery/app/extensions/context_extensions.dart';
-import 'package:small_gallery/app/resources/app_text_styles.dart';
-import 'package:small_gallery/app/resources/resources.dart';
 import 'package:small_gallery/app/ui/photos/photo_imports.dart';
-import 'package:small_gallery/domain/entity/photo_entity.dart';
+import 'package:small_gallery/app_imports.dart';
 
 class DetailsPhoto extends StatelessWidget {
   final PhotoEntity photo;
@@ -39,16 +37,13 @@ class DetailsPhoto extends StatelessWidget {
             InteractiveViewer(
               minScale: 0.5,
               maxScale: 3,
-              child: Hero(
-                tag: photo,
-                child: SizedBox(
-                  height: 200,
-                  width: context.sizeScreen.width,
-                  child: PhotoItem(
-                    photo: photo,
-                    cacheWidth: context.sizeScreen.width,
-                    borderRadiusValue: 0,
-                  ),
+              child: SizedBox(
+                height: 200,
+                width: context.sizeScreen.width,
+                child: PhotoItem(
+                  photo: photo,
+                  cacheWidth: context.sizeScreen.width,
+                  borderRadiusValue: 0,
                 ),
               ),
             ),

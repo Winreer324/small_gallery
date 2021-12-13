@@ -14,7 +14,6 @@ class PhotoScreen extends StatefulWidget {
 
 class _PhotoScreenState extends State<PhotoScreen> {
   final ScrollController scrollController = ScrollController();
-  bool showIndeterminateIndicator = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,24 +26,28 @@ class _PhotoScreenState extends State<PhotoScreen> {
         elevation: 0,
       ),
       body: BlocListener<PhotoBloc, PhotoState>(
-        listener: (context, state) {
-          if (state is PhotoSuccess || state is PhotoError) {
-            context.read<RefreshCubit>().doneUpdate();
-          }
-          if (state is PhotoItemOpen) {
+        listener: (context, state) => state.maybeWhen(
+          itemOpen: (photo) {
             Navigator.of(
               context,
               rootNavigator: true,
-            ).push(MaterialPageRoute(builder: (context) => DetailsPhoto(photo: state.photo)));
-          }
-        },
+            ).push<void>(MaterialPageRoute(builder: (context) => DetailsPhoto(photo: photo)));
+          },
+          success: (_, __, ___) {
+            context.read<RefreshCubit>().doneUpdate();
+          },
+          error: (_, __, ___) {
+            context.read<RefreshCubit>().doneUpdate();
+          },
+          orElse: () {},
+        ),
         child: SizedBox(
           height: context.sizeScreen.height,
           child: Stack(
             children: [
               RefreshWidget(
                 callPagination: () {
-                  context.read<PhotoBloc>().add(PhotoRefresh());
+                  context.read<PhotoBloc>().add(const PhotoEvent.refresh());
                   context.read<RefreshCubit>().callRefresh();
                 },
                 scrollController: scrollController,
@@ -53,42 +56,31 @@ class _PhotoScreenState extends State<PhotoScreen> {
                     width: context.sizeScreen.width,
                     height: context.sizeScreen.height,
                     child: BlocBuilder<PhotoBloc, PhotoState>(
-                      builder: (context, state) {
-                        if (state is PhotoLoading) {
-                          return const Center(child: ProgressIndicatorWidget());
-                        }
-
-                        if (state is PhotoError) {
-                          if (state.loadInternetConnect) {
-                            return Padding(
-                              padding: EdgeInsets.only(top: context.sizeScreen.height * .2),
-                              child: const SingleChildScrollView(
-                                physics: AlwaysScrollableScrollPhysics(),
-                                child: PlaceholderLostInternetConnect(),
-                              ),
-                            );
-                          }
-                        }
-
-                        if (state is PhotoSuccess) {
-                          return PaginationWidget(
+                      builder: (context, state) => state.maybeWhen(
+                        loading: () => const Center(child: ProgressIndicatorWidget()),
+                        success: (photos, isPaginationLoading, _) => PaginationWidget(
+                          scrollController: scrollController,
+                          callbackPagination: () {
+                            if (!isPaginationLoading) {
+                              context.read<PhotoBloc>().add(const PhotoEvent.fetch());
+                            }
+                          },
+                          child: PhotoList(
+                            photos: photos,
                             scrollController: scrollController,
-                            callbackPagination: () {
-                              if (!context.read<PhotoBloc>().isPaginationLoading) {
-                                context.read<PhotoBloc>()
-                                  ..isPaginationLoading = true
-                                  ..add(PhotoFetch());
-                              }
-                            },
-                            child: PhotoList(
-                              photos: state.photos,
-                              scrollController: scrollController,
-                            ),
-                          );
-                        }
-
-                        return const SizedBox();
-                      },
+                          ),
+                        ),
+                        error: (_, __, loadInternetConnect) => loadInternetConnect
+                            ? Padding(
+                                padding: EdgeInsets.only(top: context.sizeScreen.height * .2),
+                                child: const SingleChildScrollView(
+                                  physics: AlwaysScrollableScrollPhysics(),
+                                  child: PlaceholderLostInternetConnect(),
+                                ),
+                              )
+                            : const SizedBox(),
+                        orElse: () => const SizedBox(),
+                      ),
                     ),
                   ),
                 ),
@@ -96,16 +88,15 @@ class _PhotoScreenState extends State<PhotoScreen> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: BlocBuilder<PhotoBloc, PhotoState>(
-                  builder: (context, state) {
-                    if (context.read<PhotoBloc>().isPaginationLoading) {
-                      return const Padding(
-                        padding: EdgeInsets.only(bottom: 16),
-                        child: AnimationLoader(),
-                      );
-                    }
-
-                    return const SizedBox();
-                  },
+                  builder: (context, state) => state.maybeWhen(
+                    orElse: () => const SizedBox(),
+                    success: (_, isPaginationLoading, isRefresh) => isPaginationLoading && !isRefresh
+                        ? const Padding(
+                            padding: EdgeInsets.only(bottom: 16),
+                            child: AnimationLoader(),
+                          )
+                        : const SizedBox(),
+                  ),
                 ),
               ),
             ],

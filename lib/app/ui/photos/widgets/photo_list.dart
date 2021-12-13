@@ -34,7 +34,7 @@ class PhotoList extends StatelessWidget {
             child: PhotoItem(
               photo: photo,
               onTap: () {
-                context.read<PhotoBloc>().add(PhotoItemClicked(photo: photo));
+                context.read<PhotoBloc>().add(PhotoEvent.itemClicked(photo: photo));
               },
             ),
           ),

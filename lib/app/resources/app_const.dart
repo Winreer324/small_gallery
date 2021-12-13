@@ -1,8 +1,16 @@
-import 'package:alice/alice.dart';
-import 'package:flutter/foundation.dart';
+part of app;
 
 class AppConst {
-  static Alice alice = Alice(showNotification: false, showInspectorOnShake: true);
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  AppConst._();
+
+  static Alice alice = Alice(
+    showNotification: true,
+    showInspectorOnShake: true,
+    darkTheme: false,
+    maxCallsCount: 1000,
+  );
 
   ///
   static const int defaultPage = 1;
