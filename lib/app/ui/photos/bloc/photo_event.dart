@@ -1,14 +1,13 @@
-part of 'photo_bloc.dart';
+import 'package:domain/domain.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-@immutable
-abstract class PhotoEvent {}
+part 'photo_event.freezed.dart';
 
-class PhotoFetch extends PhotoEvent {}
+@freezed
+abstract class PhotoEvent with _$PhotoEvent {
+  const factory PhotoEvent.fetch() = _PhotoFetch;
 
-class PhotoRefresh extends PhotoEvent {}
+  const factory PhotoEvent.refresh() = _PhotoRefresh;
 
-class PhotoItemClicked extends PhotoEvent {
-  final PhotoEntity photo;
-
-  PhotoItemClicked({required this.photo});
+  const factory PhotoEvent.itemClicked({required PhotoEntity photo}) = _PhotoItemClicked;
 }

@@ -1,28 +1,25 @@
-part of 'photo_bloc.dart';
+import 'package:domain/domain.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-@immutable
-abstract class PhotoState {}
+part 'photo_state.freezed.dart';
 
-class PhotoInitial extends PhotoState {}
+@freezed
+abstract class PhotoState with _$PhotoState {
+  const factory PhotoState.initial() = PhotoInitial;
 
-class PhotoLoading extends PhotoState {}
+  const factory PhotoState.loading() = PhotoLoading;
 
-class PhotoItemOpen extends PhotoState {
-  final PhotoEntity photo;
+  factory PhotoState.itemOpen({required PhotoEntity photo}) = PhotoItemOpen;
 
-  PhotoItemOpen({required this.photo});
-}
+  factory PhotoState.success({
+    required List<PhotoEntity> photos,
+    @Default(false) bool isPaginationLoading,
+    @Default(false) bool isRefresh,
+  }) = PhotoSuccess;
 
-class PhotoSuccess extends PhotoState {
-  final List<PhotoEntity> photos;
-
-  PhotoSuccess({required this.photos});
-}
-
-class PhotoError extends PhotoState {
-  final String? title;
-  final String? description;
-  final bool loadInternetConnect;
-
-  PhotoError({this.title, this.description, this.loadInternetConnect = false});
+  factory PhotoState.error({
+    String? title,
+    String? description,
+    @Default(false) bool loadInternetConnect,
+  }) = _PhotoError;
 }

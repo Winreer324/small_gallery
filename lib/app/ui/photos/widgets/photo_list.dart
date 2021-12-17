@@ -26,19 +26,16 @@ class PhotoList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       itemCount: photos.length,
       itemBuilder: (BuildContext context, int index) {
-        final String imageUrl = photos[index].imageUrl;
-        return Hero(
-          tag: imageUrl,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Container(
-              color: Colors.grey,
-              child: PhotoItem(
-                imageUrl: imageUrl,
-                onTap: () {
-                  context.read<PhotoBloc>().add(PhotoItemClicked(photo: photos[index]));
-                },
-              ),
+        final PhotoEntity photo = photos[index];
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            color: Colors.grey,
+            child: PhotoItem(
+              photo: photo,
+              onTap: () {
+                context.read<PhotoBloc>().add(PhotoEvent.itemClicked(photo: photo));
+              },
             ),
           ),
         );

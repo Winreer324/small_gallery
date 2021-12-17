@@ -13,7 +13,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: kBottomNavigationBarHeight + MediaQuery.of(context).padding.bottom,
+      height: kBottomNavigationBarHeight + context.mediaQuery.padding.bottom,
       child: BottomNavigationBar(
         unselectedItemColor: AppColors.gray,
         selectedItemColor: AppColors.baseColor,

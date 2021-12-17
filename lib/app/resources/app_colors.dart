@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
+part of app;
 
 class AppColors {
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  AppColors._();
+
   static const Color baseColor = Color(0xFFED5992);
   static const Color subBaseColor = Color(0xFF2F1767);
 
