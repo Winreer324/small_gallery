@@ -46,7 +46,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
           child: Stack(
             children: [
               RefreshWidget(
-                callPagination: () {
+                callRefresh: () {
                   context.read<PhotoBloc>().add(const PhotoEvent.refresh());
                   context.read<RefreshCubit>().callRefresh();
                 },

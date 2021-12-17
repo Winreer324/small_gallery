@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class RefreshWidget extends StatefulWidget {
-  final Function() callPagination;
+  final Function() callRefresh;
   final Widget child;
   final bool isLoading;
   final ScrollController scrollController;
 
   const RefreshWidget({
     Key? key,
-    required this.callPagination,
+    required this.callRefresh,
     required this.scrollController,
     required this.child,
     this.isLoading = false,
