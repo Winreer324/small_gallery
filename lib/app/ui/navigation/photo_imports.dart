@@ -8,6 +8,6 @@ import 'package:small_gallery/app/ui/navigation/widgets/bottom_navigation_bar_im
 import 'package:small_gallery/app/ui/photos/bloc/photo_bloc.dart';
 import 'package:small_gallery/app/ui/photos/photo_imports.dart';
 import 'package:small_gallery/app/ui/widgets/refresh_widget/cubit/refresh_cubit.dart';
-import 'package:small_gallery/app_imports.dart';
+import 'package:small_gallery/app/di/injection.dart';
 
 part 'navigation_screen.dart';

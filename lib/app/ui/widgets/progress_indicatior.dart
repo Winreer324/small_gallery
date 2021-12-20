@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:small_gallery/app_imports.dart';
-
+import 'package:small_gallery/app/resources/app_colors.dart';
 class ProgressIndicatorWidget extends StatelessWidget {
   final double strokeWidth;
 

@@ -4,6 +4,9 @@ class GatewayConstants {
   static const int limitItems = 15;
   static const int defaultPage = 1;
 
+  static const String baseUrl = "http://gallery.dev.webant.ru/api/";
+  static const String basePathMedia = 'http://gallery.dev.webant.ru/media/';
+
   /// end point
   static const String photos = 'photos';
 

@@ -1,8 +1,11 @@
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:small_gallery/app/extensions/context_extensions.dart';
+import 'package:small_gallery/app/resources/app_colors.dart';
+import 'package:small_gallery/app/resources/app_icons.dart';
+import 'package:small_gallery/app/resources/app_text_styles.dart';
 import 'package:small_gallery/app/ui/photos/photo_imports.dart';
-import 'package:small_gallery/app_imports.dart';
 
 class DetailsPhoto extends StatelessWidget {
   final PhotoEntity photo;

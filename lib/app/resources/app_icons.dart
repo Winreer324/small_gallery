@@ -1,4 +1,4 @@
-part of app;
+
 
 class AppIcons {
   // This class is not meant to be instantiated or extended; this constructor

@@ -1,4 +1,4 @@
-part of app;
+import 'package:alice/alice.dart';
 
 class AppConst {
   // This class is not meant to be instantiated or extended; this constructor
