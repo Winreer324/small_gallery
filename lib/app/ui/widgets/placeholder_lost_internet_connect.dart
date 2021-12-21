@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:small_gallery/app_imports.dart';
+import 'package:small_gallery/app/resources/resources_imports.dart';
 
 class PlaceholderLostInternetConnect extends StatelessWidget {
   const PlaceholderLostInternetConnect({Key? key}) : super(key: key);

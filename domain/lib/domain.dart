@@ -11,4 +11,3 @@ export 'src/entity/photo_entity.dart';
 part 'src/entity/pagination_response.dart';
 part 'src/enum/type_photo.dart';
 part 'src/gateway/photo_gateway.dart';
-part 'src/resources/domain_constants.dart';

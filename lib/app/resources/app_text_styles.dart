@@ -1,4 +1,4 @@
-part of app;
+part of resources;
 
 class AppTextStyles {
   // This class is not meant to be instantiated or extended; this constructor

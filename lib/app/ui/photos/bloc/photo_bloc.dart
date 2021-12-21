@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:domain/domain.dart';
 import 'package:gateway/gateway.dart';
-import 'package:small_gallery/app_imports.dart';
-
+import 'package:small_gallery/app/resources/resources_imports.dart';
 import 'photo_event.dart';
 import 'photo_state.dart';
 
