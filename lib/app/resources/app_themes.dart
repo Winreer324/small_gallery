@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-import '../resources/app_colors.dart';
+part of resources;
 
 class AppThemes {
   // This class is not meant to be instantiated or extended; this constructor

@@ -14,7 +14,8 @@ import 'package:small_gallery/app/ui/widgets/placeholder_lost_internet_connect.d
 import 'package:small_gallery/app/ui/widgets/progress_indicatior.dart';
 import 'package:small_gallery/app/ui/widgets/refresh_widget/cubit/refresh_cubit.dart';
 import 'package:small_gallery/app/ui/widgets/refresh_widget/widgets/refresh_widget.dart';
-import 'package:small_gallery/app/resources/app_text_styles.dart';
+import 'package:small_gallery/app/resources/resources_imports.dart';
+
 part 'photo_screen.dart';
 
 part 'widgets/photo_item.dart';

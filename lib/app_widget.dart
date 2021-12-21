@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'app/resources/app_strings.dart';
-import 'app/resources/app_themes.dart';
+import 'package:small_gallery/app/resources/resources_imports.dart';
 import 'app/ui/navigation/photo_imports.dart';
 
 class Gallery extends StatelessWidget {

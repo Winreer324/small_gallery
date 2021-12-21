@@ -1,5 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+part of resources;
 
 class AppColors {
   // This class is not meant to be instantiated or extended; this constructor

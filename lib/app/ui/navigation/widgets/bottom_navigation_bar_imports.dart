@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:small_gallery/app/resources/app_strings.dart';
-import 'package:small_gallery/app/resources/app_text_styles.dart';
-import 'package:small_gallery/app/resources/app_colors.dart';
-import 'package:small_gallery/app/resources/app_widget_constants.dart';
-import 'package:small_gallery/app/resources/app_icons.dart';
 import 'package:small_gallery/app/extensions/context_extensions.dart';
+import 'package:small_gallery/app/resources/resources_imports.dart';
+
 part 'bottom_navigation_bar_item_widget.dart';
+
 part 'bottom_navigation_bar_widget.dart';

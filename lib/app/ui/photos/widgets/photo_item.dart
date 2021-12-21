@@ -4,6 +4,8 @@ class PhotoItem extends StatelessWidget {
   final PhotoEntity photo;
   final double? cacheWidth;
   final double? height;
+  final double? heightLoadingWidget;
+  final bool ignoreCacheWidth;
   final double borderRadiusValue;
   final Function()? onTap;
 
@@ -13,6 +15,8 @@ class PhotoItem extends StatelessWidget {
     this.onTap,
     this.cacheWidth,
     this.height,
+    this.heightLoadingWidget,
+    this.ignoreCacheWidth = false,
     this.borderRadiusValue = 8,
   }) : super(key: key);
 
@@ -28,10 +32,19 @@ class PhotoItem extends StatelessWidget {
           child: Image.network(
             photo.imageUrl,
             fit: BoxFit.cover,
-            cacheWidth: cacheWidth != null ? cacheWidth!.toInt() : 350,
+            cacheWidth: ignoreCacheWidth
+                ? null
+                : cacheWidth != null
+                    ? cacheWidth!.toInt()
+                    : 350,
             loadingBuilder: (context, child, loadingProgress) {
               if (loadingProgress != null) {
-                return const Center(child: Text('loading'));
+                return SizedBox(
+                  height: heightLoadingWidget ?? double.infinity,
+                  child: const Center(
+                    child: Text('loading'),
+                  ),
+                );
               }
 
               return child;

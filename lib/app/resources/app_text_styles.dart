@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import '../resources/app_colors.dart';
+part of resources;
 
 class AppTextStyles {
   // This class is not meant to be instantiated or extended; this constructor
