@@ -39,25 +39,44 @@ class PhotoItem extends StatelessWidget {
                     : 350,
             loadingBuilder: (context, child, loadingProgress) {
               if (loadingProgress != null) {
-                return SizedBox(
-                  height: heightLoadingWidget ?? double.infinity,
-                  child: const Center(
-                    child: Text('loading'),
-                  ),
-                );
+                return _ErrorLoadingWidget(heightLoadingWidget: heightLoadingWidget);
               }
 
               return child;
             },
             errorBuilder: (context, error, stackTrace) {
               if (photo.imageUrl.contains('.svg')) {
-                return const Center(child: Text('svg'));
+                return Center(
+                  child: SvgPicture.network(
+                    photo.imageUrl,
+                    fit: BoxFit.cover,
+                    placeholderBuilder: (context) {
+                      return _ErrorLoadingWidget(heightLoadingWidget: heightLoadingWidget);
+                    },
+                  ),
+                );
               }
 
               return const SizedBox();
             },
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _ErrorLoadingWidget extends StatelessWidget {
+  final double? heightLoadingWidget;
+
+  const _ErrorLoadingWidget({Key? key, this.heightLoadingWidget}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: heightLoadingWidget ?? double.infinity,
+      child: const Center(
+        child: Text('loading'),
       ),
     );
   }

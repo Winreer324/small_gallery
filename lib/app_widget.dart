@@ -12,6 +12,7 @@ class Gallery extends StatelessWidget {
     return MaterialApp(
       title: AppStrings.titleApp,
       theme: AppThemes.appTheme,
+      navigatorKey: AppConst.alice.getNavigatorKey(),
       home: const NavigationScreen(),
     );
   }
