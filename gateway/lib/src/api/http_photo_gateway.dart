@@ -1,5 +1,6 @@
 part of gateway;
 
+@LazySingleton(as: PhotoGateway)
 class HttpPhotoGateway extends PhotoGateway {
   final Dio dio;
 
@@ -11,7 +12,7 @@ class HttpPhotoGateway extends PhotoGateway {
     required int page,
     required int limit,
   }) async {
-    final Map<String, dynamic> queryParameters = {
+    final Map<String, dynamic> queryParameters =  <String, dynamic>{
       GatewayConstants.queryParametersPage: page,
       GatewayConstants.queryParametersLimit: limit,
       typePhoto.typePhotoByString.toLowerCase(): true,

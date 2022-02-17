@@ -20,4 +20,11 @@ class GatewayConstants {
   static const String detail = 'detail';
   static const String errorDescription = 'error_description';
   static const String errorType = 'error';
+
+  static Alice alice = Alice(
+    showNotification: true,
+    showInspectorOnShake: true,
+    darkTheme: false,
+    maxCallsCount: 1000,
+  );
 }

@@ -388,3 +388,6 @@ fabric.properties
 **.g.dart
 **/*.g.dart
 **/*.freezed.dart
+
+*.lock
+*.config.dart

@@ -5,9 +5,12 @@ import 'dart:developer';
 
 import 'src/entity/photo_entity.dart';
 
+export 'src/di/injection.dart';
 export 'src/entity/image_entity.dart';
 export 'src/entity/photo_entity.dart';
 
 part 'src/entity/pagination_response.dart';
+
 part 'src/enum/type_photo.dart';
+
 part 'src/gateway/photo_gateway.dart';

@@ -19,9 +19,14 @@ class _PhotoScreenState extends State<PhotoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          widget.typePhoto.typePhotoByString,
-          style: AppTextStyles.titleAppBar,
+        title: GestureDetector(
+          onTap: () {
+            GatewayConstants.alice.showInspector();
+          },
+          child: Text(
+            widget.typePhoto.typePhotoByString,
+            style: AppTextStyles.titleAppBar,
+          ),
         ),
         elevation: 0,
       ),

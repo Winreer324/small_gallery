@@ -7,8 +7,8 @@ part 'photo_entity.freezed.dart';
 part 'photo_entity.g.dart';
 
 @freezed
-@JsonSerializable(explicitToJson: true)
 class PhotoEntity with _$PhotoEntity {
+  @JsonSerializable(explicitToJson: true)
   const factory PhotoEntity({
     required int id,
     required String name,

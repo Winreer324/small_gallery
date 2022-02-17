@@ -5,13 +5,6 @@ class AppConst {
   // prevents instantiation and extension.
   AppConst._();
 
-  static Alice alice = Alice(
-    showNotification: true,
-    showInspectorOnShake: true,
-    darkTheme: false,
-    maxCallsCount: 1000,
-  );
-
   ///
   static const int defaultPage = 1;
   static const int limitItems = 14;

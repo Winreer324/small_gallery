@@ -1,5 +1,6 @@
 part of gateway;
 
+@injectable
 class NetworkInfo {
   final DataConnectionChecker dataConnectionChecker;
 

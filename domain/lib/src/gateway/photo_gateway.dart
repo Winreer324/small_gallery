@@ -1,5 +1,6 @@
 part of domain;
 
+// @injectable
 abstract class PhotoGateway {
   const PhotoGateway();
 
