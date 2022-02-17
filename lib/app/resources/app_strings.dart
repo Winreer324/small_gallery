@@ -10,6 +10,7 @@ class AppStrings {
   /// navigation bar
   static const String newNavigationBar = 'New';
   static const String popularNavigationBar = 'Popular';
+  static const String settingsNavigationBar = 'Settings';
 
   static const String ohShucks = 'Oh shucks!';
   static const String slowOrNoInternetConnection =

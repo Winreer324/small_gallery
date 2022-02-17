@@ -5,6 +5,11 @@ class AppTextStyles {
   // prevents instantiation and extension.
   AppTextStyles._();
 
+  static final TextStyle baseBlockTitleText = GoogleFonts.roboto(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+  );
+
   static final TextStyle lightBlackText = GoogleFonts.roboto(fontSize: 12, color: AppColors.lightBlack);
 
   static final TextStyle textMajorSubColor = GoogleFonts.roboto(

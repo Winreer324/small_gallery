@@ -49,6 +49,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
           typePhoto: TypePhoto.popularPhoto,
         ),
       ),
+      const ProfileSettingsScreen()
     ];
 
     _initNavigationKeys();

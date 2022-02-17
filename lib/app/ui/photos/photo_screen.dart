@@ -25,7 +25,9 @@ class _PhotoScreenState extends State<PhotoScreen> {
           },
           child: Text(
             widget.typePhoto.typePhotoByString,
-            style: AppTextStyles.titleAppBar,
+            style: AppTextStyles.titleAppBar.copyWith(
+              color: context.theme.backIconAppBar,
+            ),
           ),
         ),
         elevation: 0,

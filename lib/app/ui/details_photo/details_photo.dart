@@ -2,6 +2,7 @@ import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:small_gallery/app/extensions/context_extensions.dart';
+import 'package:small_gallery/app/extensions/theme_data/theme_data_extension.dart';
 import 'package:small_gallery/app/resources/resources_imports.dart';
 import 'package:small_gallery/app/ui/photos/photo_imports.dart';
 
@@ -23,7 +24,7 @@ class DetailsPhoto extends StatelessWidget {
             padding: const EdgeInsets.all(14),
             child: SvgPicture.asset(
               AppIcons.backIconSvg,
-              color: AppColors.subBaseColor,
+              color: context.theme.backIconAppBar,
               width: 24,
               height: 24,
             ),
@@ -55,7 +56,7 @@ class DetailsPhoto extends StatelessWidget {
                 children: [
                   Text(
                     photo.name,
-                    style: AppTextStyles.textMajorSubColor,
+                    style: AppTextStyles.textMajorSubColor.copyWith(color: context.theme.titleBaseText),
                   ),
                   if (photo.description != null)
                     Padding(

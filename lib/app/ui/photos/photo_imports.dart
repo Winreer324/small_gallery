@@ -7,6 +7,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gateway/gateway.dart';
 import 'package:small_gallery/app/extensions/context_extensions.dart';
 import 'package:small_gallery/app/extensions/photo_entity_extension.dart';
+import 'package:small_gallery/app/extensions/theme_data/theme_data_extension.dart';
+import 'package:small_gallery/app/resources/resources_imports.dart';
 import 'package:small_gallery/app/ui/details_photo/details_photo.dart';
 import 'package:small_gallery/app/ui/photos/bloc/photo_bloc.dart';
 import 'package:small_gallery/app/ui/widgets/animation_loader.dart';
@@ -15,7 +17,6 @@ import 'package:small_gallery/app/ui/widgets/placeholder_lost_internet_connect.d
 import 'package:small_gallery/app/ui/widgets/progress_indicator.dart';
 import 'package:small_gallery/app/ui/widgets/refresh_widget/cubit/refresh_cubit.dart';
 import 'package:small_gallery/app/ui/widgets/refresh_widget/widgets/refresh_widget.dart';
-import 'package:small_gallery/app/resources/resources_imports.dart';
 
 part 'photo_screen.dart';
 

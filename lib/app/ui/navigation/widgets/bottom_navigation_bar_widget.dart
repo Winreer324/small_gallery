@@ -15,9 +15,6 @@ class BottomNavigationBarWidget extends StatelessWidget {
     return SizedBox(
       height: kBottomNavigationBarHeight + context.mediaQuery.padding.bottom,
       child: BottomNavigationBar(
-        unselectedItemColor: AppColors.gray,
-        selectedItemColor: AppColors.baseColor,
-        backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 10,
         selectedFontSize: 10,
@@ -32,6 +29,10 @@ class BottomNavigationBarWidget extends StatelessWidget {
           BottomNavigationBarItemWidget(
             iconPath: AppIcons.popularNavigationBarSvg,
             label: AppStrings.popularNavigationBar,
+          ),
+          BottomNavigationBarItemWidget(
+            iconData: Icons.person,
+            label: AppStrings.settingsNavigationBar,
           ),
         ],
         currentIndex: currentIndex,

@@ -16,6 +16,6 @@ void main() async {
   setInjectionsApp(getIt);
 
   runZonedGuarded(() {
-    runApp(Gallery());
+    runApp(const Gallery());
   }, (_, __) {});
 }
