@@ -1,13 +1,11 @@
 library photos;
 
-import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gateway/gateway.dart';
 import 'package:small_gallery/app/extensions/context_extensions.dart';
 import 'package:small_gallery/app/extensions/photo_entity_extension.dart';
-import 'package:small_gallery/app/extensions/theme_data/theme_data_extension.dart';
 import 'package:small_gallery/app/resources/resources_imports.dart';
 import 'package:small_gallery/app/ui/details_photo/details_photo.dart';
 import 'package:small_gallery/app/ui/photos/bloc/photo_bloc.dart';

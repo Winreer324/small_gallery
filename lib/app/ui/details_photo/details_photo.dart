@@ -2,7 +2,6 @@ import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:small_gallery/app/extensions/context_extensions.dart';
-import 'package:small_gallery/app/extensions/theme_data/theme_data_extension.dart';
 import 'package:small_gallery/app/resources/resources_imports.dart';
 import 'package:small_gallery/app/ui/photos/photo_imports.dart';
 
@@ -17,9 +16,7 @@ class DetailsPhoto extends StatelessWidget {
       appBar: AppBar(
         leading: GestureDetector(
           behavior: HitTestBehavior.translucent,
-          onTap: () {
-            Navigator.pop(context);
-          },
+          onTap: () => Navigator.pop(context),
           child: Padding(
             padding: const EdgeInsets.all(14),
             child: SvgPicture.asset(

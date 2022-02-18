@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 export 'package:small_gallery/app/extensions/theme_data/theme_data_extension.dart';

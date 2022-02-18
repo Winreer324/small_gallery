@@ -41,6 +41,8 @@ dependencies:
   injectable: ^1.5.3
   # https://pub.dev/packages/equatable
   equatable: ^2.0.3
+  # https://pub.dev/packages/elementary
+  elementary: ^1.0.0
 
   domain:
     path: ./domain

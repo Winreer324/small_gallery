@@ -46,7 +46,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
           error: (_, __, ___) {
             context.read<RefreshCubit>().doneUpdate();
           },
-          orElse: () {},
+          orElse: () => null,
         ),
         child: SizedBox(
           height: context.sizeScreen.height,

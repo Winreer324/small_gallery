@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:domain/domain.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gateway/gateway.dart';
