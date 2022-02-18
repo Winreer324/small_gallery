@@ -11,9 +11,9 @@ import 'app_widget.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // set di
-  final getIt = setInjectionsDomain();
-  setInjectionsGateway(getIt);
-  setInjectionsApp(getIt);
+  setInjectionsDomain(injection);
+  setInjectionsGateway(injection);
+  setInjectionsApp(injection);
 
   runZonedGuarded(() {
     runApp(const Gallery());
