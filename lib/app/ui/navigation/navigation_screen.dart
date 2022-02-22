@@ -21,8 +21,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
     super.initState();
 
     _screensList = [
-      const InfinityListScreen(),
-      const CounterScreen(),
       MultiBlocProvider(
         providers: [
           BlocProvider(

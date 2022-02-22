@@ -7,10 +7,10 @@ class PaginationResponse<T> {
   final List<T> items;
 
   PaginationResponse({
-    required this.totalItems,
-    required this.itemsPerPage,
-    required this.countOfPages,
-    required this.items,
+    this.totalItems = 0,
+    this.itemsPerPage = 0,
+    this.countOfPages = 0,
+    this.items = const [],
   });
 
   factory PaginationResponse.fromJson(Map<String, dynamic> json) {

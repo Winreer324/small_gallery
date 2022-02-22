@@ -1,5 +1,5 @@
 import 'package:elementary/elementary.dart';
-import 'package:flutter/widgets.dart';
+import 'package:small_gallery/app/ui/base/base_pagination_wm.dart';
 import 'package:small_gallery/app/ui/elementary/infinity_list/infinity_list_screen.dart';
 
 import 'infinity_list_model.dart';
@@ -31,13 +31,7 @@ class InfinityListScreenWM extends WidgetModel<InfinityListScreen, InfinityListM
   Future<void> _initData() async {
     _currentInfinityList.loading();
     final response = await model.fetchData(page: _pagePagination);
-    _currentInfinityList.content(response);
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
+    _currentInfinityList.content(response.items);
   }
 
   @override
@@ -47,7 +41,15 @@ class InfinityListScreenWM extends WidgetModel<InfinityListScreen, InfinityListM
     }
     _pagePagination++;
     final response = await model.fetchData(page: _pagePagination);
-    _currentInfinityList.content(response);
+    _currentInfinityList.content(response.items);
+  }
+
+  @override
+  void dispose() {
+    if (_scrollController.hasClients) {
+      _scrollController.dispose();
+    }
+    super.dispose();
   }
 }
 
@@ -57,12 +59,4 @@ InfinityListScreenWM createInfinityListScreenWM(BuildContext _) => InfinityListS
 
 abstract class IInfinityListWm extends IWidgetModel implements BasePaginationWm {
   ListenableState<EntityState<List<int>?>> get currentInfinityList;
-}
-
-abstract class BasePaginationWm {
-  ScrollController get scrollController;
-
-  Future<void> fetchDataByPagination();
-
-  ValueNotifier<bool> get loadingPagination;
 }

@@ -61,22 +61,15 @@ extension AppThemeData on ThemeData {
 
   Color get bottomPopOverColor => isLightMode ? AppColors.basketColor : AppColors.darkBlue;
 
-  // String get entryBackgroundImage => isLightMode ? AppAssets.entryBackground : AppAssets.entryDarkBackground;
-
   Color get selectedServiceIconColor => isLightMode ? AppColors.darkColor : Colors.white;
 
   Color get selectedCalendarCellTextColor => isLightMode ? Colors.white : AppColors.darkColor;
-
-  // Decoration get todayCalendarCellDecoration =>
-  //     isLightMode ? CalendarStyle().todayDecoration : CalendarStyle().todayDarkDecoration;
 
   Color get studioServiceColor => isLightMode ? AppColors.subBaseColor : AppColors.backgroundDarkColor;
 
   Color get photoIndicatorColor => isLightMode ? AppColors.grey : AppColors.baseDarkColor;
 
   Color get dateColor => isLightMode ? AppColors.darkColor : AppColors.darkBlue;
-
-  // String get emptyImagePath => isLightMode ? AppAssets.baseEmptyImage : AppAssets.baseDarkEmptyImage;
 
   Color get avatarInitialsColor => isLightMode ? AppColors.baseColor : AppColors.darkBlue;
 
@@ -91,15 +84,6 @@ extension AppThemeData on ThemeData {
   Color get titleAppBar => isLightMode ? AppColors.subBaseColor : Colors.white;
 
   Color get titleBaseText => isLightMode ? AppColors.subBaseColor : Colors.white;
-
-  // String get firstIntroductionImage =>
-  //     isLightMode ? AppAssets.firstIntroductionImage : AppAssets.firstIntroductionDarkImage;
-  //
-  // String get secondIntroductionImage =>
-  //     isLightMode ? AppAssets.secondIntroductionImage : AppAssets.secondIntroductionDarkImage;
-  //
-  // String get thirdIntroductionImage =>
-  //     isLightMode ? AppAssets.thirdIntroductionImage : AppAssets.thirdIntroductionDarkImage;
 
   SystemUiOverlayStyle get systemUiOverlayStyle => isLightMode ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light;
 }

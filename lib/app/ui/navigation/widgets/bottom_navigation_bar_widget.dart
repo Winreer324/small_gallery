@@ -26,14 +26,6 @@ class BottomNavigationBarWidget extends StatelessWidget {
             items: [
               BottomNavigationBarItemWidget(
                 iconPath: AppIcons.newNavigationBarSvg,
-                label: 'infinity list',
-              ),
-              BottomNavigationBarItemWidget(
-                iconPath: AppIcons.newNavigationBarSvg,
-                label: 'counter',
-              ),
-              BottomNavigationBarItemWidget(
-                iconPath: AppIcons.newNavigationBarSvg,
                 label: AppStrings.newNavigationBar,
               ),
               BottomNavigationBarItemWidget(

@@ -22,9 +22,8 @@ class AppThemes {
     appBarTheme: const AppBarTheme(
       color: Colors.white,
       iconTheme: IconThemeData(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      // color: Colors.white,
       brightness: Brightness.light,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -65,7 +64,6 @@ class AppThemes {
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
-      // color: Colors.white,
       brightness: Brightness.light,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
